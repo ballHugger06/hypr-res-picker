@@ -11,6 +11,7 @@ hypr-res-picker "auto, 1, vrr, 1" "dmenu"
 `
 bind = $mainMod SHIFT, P, exec, hypr-res-picker "auto, 2" "wofi -d"
 `
+
 hypr-res-picker needs a dmenu application for the gui, you can use whatever you want as long as it has a dmenu mode
 
 You can specify your preferred command as the second arguement, as shown above at the hyprland config
