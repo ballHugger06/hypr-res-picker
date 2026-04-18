@@ -1,0 +1,11 @@
+#!/bin/sh
+
+monitor=$1
+if [ $(echo $1 | wc -m) -le 1 ]; then
+	read monitor
+fi
+echo $monitor > .res-picker-monitor-name.tmp
+
+num=$(echo $monitor | grep -o "-e^[[:digit:]]*")
+
+hyprctl monitors | grep -o '-eavailableModes:.*$' | nl -w1 -s: | grep -o "-e^$num.*$" | cut -b$((17 + $(echo $num | wc -c) ))- | tr " " "\n" | grep -E '-e^.+$'

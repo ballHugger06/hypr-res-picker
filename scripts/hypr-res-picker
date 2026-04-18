@@ -1,0 +1,19 @@
+#!/bin/sh
+optionstring=$1
+menu=$2
+
+if [ $(echo $1 | wc -c) -le 1 ]; then
+	printf "Monitor options not specified, going with defaults.""\n\tAdditional options can be passed as a string arguement.\n\tThis string will be concatenated to the final hyprctl call\n\n\tExample:\t hypr-res-picker \"auto, 0.5, vrr, 1, transform, 1\"\n\tDefault:\t hypr-res-picker \"auto, 1\"\n"
+	optionstring="auto, 1"
+fi
+
+if [ $(echo $2 | wc -c) -le 1 ]; then
+	printf "Menu application not specified, going with dmenu\n"
+	menu="dmenu"
+fi
+
+echo $optionstring > .res-picker-options.tmp
+
+hypr-res-picker-list-monitors | $($menu) > .res-picker-temp.tmp
+cat .res-picker-temp.tmp | hypr-res-picker-list-resolutions | $($menu) | hypr-res-picker-change-resolution
+rm .res-picker-temp.tmp

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+monitors=$(hyprctl monitors | grep -o '-eMonitor.*[^:]' | nl -w1 -s:)
+descs=$(hyprctl monitors | grep -o '-edescription:.*$' | nl -w1 -s:)
+
+
+ceil=$(printf "$monitors\n" | wc -l)
+count=1
+
+while [ $count -le $ceil ]; do
+	nowitor=$(printf "$monitors" | grep -o "-e^$count:.*$")
+	nowdesc=$(printf "$descs" | grep -o "-e^$count:.*$")
+	nowitor=${nowitor:$(echo $count | wc -c)}
+	nowdesc=${nowdesc:$(echo $count | wc -c)}
+	printf "$count : $nowitor - $nowdesc\n"
+	((count++))
+done

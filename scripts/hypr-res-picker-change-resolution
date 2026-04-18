@@ -1,0 +1,12 @@
+#!/bin/sh
+
+read res
+
+monitor=$(cat .res-picker-monitor-name.tmp)
+options=$(cat .res-picker-options.tmp)
+monitor=$(echo $monitor | grep -o '-eMonitor [^ ]*')
+monitor=${monitor:8}
+rm .res-picker-monitor-name.tmp
+rm .res-picker-options.tmp
+
+hyprctl keyword monitor $monitor, $res, $options

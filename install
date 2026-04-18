@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cp scripts/hypr-res-picker-list-monitors scripts/hypr-res-picker-list-resolutions scripts/hypr-res-picker-change-resolution scripts/hypr-res-picker /usr/local/bin/
