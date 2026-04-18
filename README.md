@@ -3,9 +3,11 @@ Resolution picker for the hyprland WM written in bash.
 
 ### Usage
 You can execute hypr-res-picker from a terminal, or preferrably bind it to a key
+
 `bash
 hypr-res-picker "auto, 1, vrr, 1" "dmenu"
 `
+
 `
 bind = $mainMod SHIFT, P, exec, hypr-res-picker "auto, 2" "wofi -d"
 `
