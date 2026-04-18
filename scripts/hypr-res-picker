@@ -14,6 +14,6 @@ fi
 
 echo $optionstring > .res-picker-options.tmp
 
-hypr-res-picker-list-monitors | $($menu) > .res-picker-temp.tmp
-cat .res-picker-temp.tmp | hypr-res-picker-list-resolutions | $($menu) | hypr-res-picker-change-resolution
+hypr-res-picker-list-monitors | $menu > .res-picker-temp.tmp
+cat .res-picker-temp.tmp | hypr-res-picker-list-resolutions | $menu | hypr-res-picker-change-resolution
 rm .res-picker-temp.tmp
